@@ -16,6 +16,7 @@ export class PaisComponent implements OnInit {
   constructor( private PaisService: PaisService) { }
 
   getAll(){
+    
     this.PaisService.getAll().subscribe(
       (result: any) =>{
         

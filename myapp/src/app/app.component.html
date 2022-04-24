@@ -1,33 +1,34 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div>
+    <input type="text" pInputText [(ngModel)]="nombre" placeholder="Ingrese nombre de Pais" />
+    <p-button label="Buscar" (onClick)="getPais(nombre)"  ></p-button>
+    <p-button label="listar" (onClick)="getAll()"  ></p-button>
+    <p-button label="Limpiar" (onClick)="limpiar()"  ></p-button>
 
-    <p-table>
-        <ng-template pTemplate="Header">
-            <tr>
-                <th>Nombre</th>
-                <th>Capital</th>
-                <th>Poblacion</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-pais>
-            <tr>
-                <td>Pais</td>
-                <td>Capital</td>
-                <td>Poblacion</td>
-            </tr>
-            <tr>
-                <td>{{pais.nombre}}</td>
-                <td>{{pais.capital}}</td>
-                <td>{{pais.poblacion}}</td>
-            </tr>
-            
-        </ng-template> 
-    </p-table>
-</body>
-</html>
+    <p-dialog header="Error" [(visible)]="display">
+      Pais no encontado
+    </p-dialog>
+  
+
+</div>
+<div class="ui-g">
+    <p-panel header="Paises" [style]="{width: '70%'}">
+        <p-table [value]="paises">
+            <ng-template pTemplate="Header" >
+                <tr>
+                    <th>Nombre</th>
+                    <th>Capital</th>
+                    <th>Poblacion</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-pais>
+
+                <tr>
+                    <td>{{pais.nombre}}</td>
+                    <td>{{pais.capital}}</td>
+                    <td>{{pais.poblacion}}</td>
+                </tr>
+                
+            </ng-template> 
+        </p-table>
+    </p-panel>
+</div>
